@@ -78,21 +78,50 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "Love Restaurant — Cocina romántica en Villavicencio, Meta" },
-      { name: "description", content: "Love Restaurant en Villavicencio: el rincón más romántico del Meta. Cenas bajo el árbol de cerezo rosa, cócteles de autor y momentos inolvidables." },
+      {
+        name: "description",
+        content:
+          "Love Restaurant en Villavicencio: el rincón más romántico del Meta. Cenas bajo el árbol de cerezo rosa, cócteles de autor y momentos inolvidables.",
+      },
       { name: "author", content: "Love Restaurant" },
-      { property: "og:title", content: "Love Restaurant — Cocina romántica en Villavicencio, Meta" },
-      { property: "og:description", content: "Love Restaurant en Villavicencio: el rincón más romántico del Meta. Cenas bajo el árbol de cerezo rosa, cócteles de autor y momentos inolvidables." },
+      {
+        property: "og:title",
+        content: "Love Restaurant — Cocina romántica en Villavicencio, Meta",
+      },
+      {
+        property: "og:description",
+        content:
+          "Love Restaurant en Villavicencio: el rincón más romántico del Meta. Cenas bajo el árbol de cerezo rosa, cócteles de autor y momentos inolvidables.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Love Restaurant — Cocina romántica en Villavicencio, Meta" },
-      { name: "twitter:description", content: "Love Restaurant en Villavicencio: el rincón más romántico del Meta. Cenas bajo el árbol de cerezo rosa, cócteles de autor y momentos inolvidables." },
-      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/72c5d7ef-261b-4409-8f17-96e6856480a5/id-preview-c6fbc319--81628492-0f59-41f8-8211-0fb1e0590d43.lovable.app-1782863160280.png" },
-      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/72c5d7ef-261b-4409-8f17-96e6856480a5/id-preview-c6fbc319--81628492-0f59-41f8-8211-0fb1e0590d43.lovable.app-1782863160280.png" },
+      {
+        name: "twitter:title",
+        content: "Love Restaurant — Cocina romántica en Villavicencio, Meta",
+      },
+      {
+        name: "twitter:description",
+        content:
+          "Love Restaurant en Villavicencio: el rincón más romántico del Meta. Cenas bajo el árbol de cerezo rosa, cócteles de autor y momentos inolvidables.",
+      },
+      {
+        property: "og:image",
+        content:
+          "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/72c5d7ef-261b-4409-8f17-96e6856480a5/id-preview-c6fbc319--81628492-0f59-41f8-8211-0fb1e0590d43.lovable.app-1782863160280.png",
+      },
+      {
+        name: "twitter:image",
+        content:
+          "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/72c5d7ef-261b-4409-8f17-96e6856480a5/id-preview-c6fbc319--81628492-0f59-41f8-8211-0fb1e0590d43.lovable.app-1782863160280.png",
+      },
     ],
     links: [
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Jost:wght@300;400;500;600&family=Dancing+Script:wght@600;700&display=swap" },
+      {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Jost:wght@300;400;500;600&family=Dancing+Script:wght@600;700&display=swap",
+      },
       { rel: "stylesheet", href: appCss },
     ],
   }),
