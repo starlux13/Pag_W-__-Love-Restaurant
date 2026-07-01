@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import { toast } from "sonner";
 import { Toaster } from "@/components/ui/sonner";
+import { ThemeSwitcher } from "@/components/theme-switcher";
 import heroImg from "@/assets/hero.jpg";
 import { createReservation, getReservations, saveReservations } from "@/lib/admin-reservations";
 import aboutImg from "@/assets/about.jpg";
@@ -191,7 +192,7 @@ function useScrollReveal() {
           }
         });
       },
-      { threshold: 0.12 },
+      { threshold: 0.08, rootMargin: "50px" },
     );
     els.forEach((el) => io.observe(el));
     return () => io.disconnect();
@@ -243,20 +244,24 @@ function Nav() {
           >
             Admin
           </a>
+          <ThemeSwitcher />
         </nav>
-        <button onClick={() => setOpen((v) => !v)} className="md:hidden" aria-label="Menú">
-          <div className="flex flex-col gap-1.5">
-            <span
-              className={`h-0.5 w-6 bg-foreground transition-transform ${open ? "translate-y-2 rotate-45" : ""}`}
-            />
-            <span
-              className={`h-0.5 w-6 bg-foreground transition-opacity ${open ? "opacity-0" : ""}`}
-            />
-            <span
-              className={`h-0.5 w-6 bg-foreground transition-transform ${open ? "-translate-y-2 -rotate-45" : ""}`}
-            />
-          </div>
-        </button>
+        <div className="flex items-center gap-3 md:hidden">
+          <ThemeSwitcher />
+          <button onClick={() => setOpen((v) => !v)} aria-label="Menú">
+            <div className="flex flex-col gap-1.5">
+              <span
+                className={`h-0.5 w-6 bg-foreground transition-transform ${open ? "translate-y-2 rotate-45" : ""}`}
+              />
+              <span
+                className={`h-0.5 w-6 bg-foreground transition-opacity ${open ? "opacity-0" : ""}`}
+              />
+              <span
+                className={`h-0.5 w-6 bg-foreground transition-transform ${open ? "-translate-y-2 -rotate-45" : ""}`}
+              />
+            </div>
+          </button>
+        </div>
       </div>
       {open && (
         <div className="border-t border-border bg-background/95 backdrop-blur md:hidden">
@@ -299,36 +304,36 @@ function Hero() {
         height={1280}
       />
       <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/70" />
-      <div className="relative z-10 mx-auto max-w-5xl px-6 text-center text-white">
-        <p className="animate-fade-in mb-6 font-script text-2xl text-accent md:text-3xl">
+      <div className="relative z-10 mx-auto max-w-5xl px-4 text-center text-white md:px-6">
+        <p className="animate-fade-in mb-4 sm:mb-6 font-script text-xl sm:text-2xl md:text-3xl text-accent">
           Donde el amor florece
         </p>
-        <h1 className="animate-fade-up font-display text-5xl font-light leading-[1.05] md:text-7xl lg:text-8xl">
+        <h1 className="animate-fade-up font-display text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-light leading-[1.05]">
           Una noche bajo el
           <br />
           <span className="italic text-gradient-gold">cerezo rosa</span>
         </h1>
         <p
-          className="animate-fade-up mx-auto mt-8 max-w-2xl text-base font-light leading-relaxed text-white/90 md:text-lg"
+          className="animate-fade-up mx-auto mt-4 sm:mt-8 max-w-2xl text-xs sm:text-base md:text-lg font-light leading-relaxed text-white/90"
           style={{ animationDelay: "0.2s" }}
         >
           El rincón más romántico de Villavicencio. Cocina de autor, coctelería única y la atmósfera
           mágica que estabas buscando para celebrar lo importante.
         </p>
         <div
-          className="animate-fade-up mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row"
+          className="animate-fade-up mt-6 sm:mt-10 flex flex-col items-center justify-center gap-3 sm:gap-4"
           style={{ animationDelay: "0.4s" }}
         >
           <a
             href="#reservas"
-            className="group inline-flex items-center gap-3 rounded-full bg-gradient-to-r from-rose-deep to-primary px-10 py-4 text-sm uppercase tracking-[0.22em] text-primary-foreground shadow-elegant transition-transform hover:-translate-y-0.5 hover:shadow-2xl"
+            className="group inline-flex items-center gap-3 rounded-full bg-gradient-to-r from-rose-deep to-primary px-6 sm:px-10 py-3 sm:py-4 text-xs sm:text-sm uppercase tracking-[0.22em] text-primary-foreground shadow-elegant transition-transform hover:-translate-y-0.5 hover:shadow-2xl"
           >
             Reservar una Mesa
             <span className="transition-transform group-hover:translate-x-1">→</span>
           </a>
           <a
             href="#menu"
-            className="rounded-full border border-white/40 px-10 py-4 text-sm uppercase tracking-[0.22em] text-white backdrop-blur-sm transition-colors hover:bg-white/10"
+            className="rounded-full border border-white/40 px-6 sm:px-10 py-3 sm:py-4 text-xs sm:text-sm uppercase tracking-[0.22em] text-white backdrop-blur-sm transition-colors hover:bg-white/10"
           >
             Ver el menú
           </a>
@@ -346,22 +351,22 @@ function Hero() {
 
 function Essence() {
   return (
-    <section id="esencia" className="relative py-24 md:py-32">
-      <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 px-6 md:grid-cols-12 md:gap-16">
+    <section id="esencia" className="relative py-16 md:py-32">
+      <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-8 px-4 md:grid-cols-12 md:gap-16 md:px-6">
         <div className="reveal relative md:col-span-6 md:col-start-1">
           <div className="absolute -left-4 -top-4 h-32 w-32 rounded-full bg-rose/40 blur-3xl md:-left-8 md:-top-8 md:h-48 md:w-48" />
-          <div className="relative overflow-hidden rounded-[2rem] shadow-elegant">
+          <div className="relative overflow-hidden rounded-2xl sm:rounded-[2rem] shadow-elegant">
             <img
               src={aboutImg}
               alt="Fachada de Love Restaurant con árbol de cerezo"
               loading="lazy"
-              className="h-[520px] w-full object-cover md:h-[640px]"
+              className="h-[380px] sm:h-[520px] w-full object-cover md:h-[640px]"
               width={1200}
               height={1400}
             />
           </div>
-          <div className="absolute -bottom-8 -right-4 hidden rounded-2xl border border-accent/40 bg-card p-6 shadow-soft md:block md:-right-8">
-            <p className="font-script text-3xl text-primary">Desde 2019</p>
+          <div className="absolute -bottom-8 -right-4 hidden rounded-2xl border border-accent/40 bg-card p-4 sm:p-6 shadow-soft md:block md:-right-8">
+            <p className="font-script text-2xl sm:text-3xl text-primary">Desde 2019</p>
             <p className="mt-1 text-xs uppercase tracking-[0.2em] text-muted-foreground">
               Villavicencio, Meta
             </p>
@@ -369,27 +374,27 @@ function Essence() {
         </div>
         <div className="reveal md:col-span-5 md:col-start-8">
           <p className="text-xs uppercase tracking-[0.3em] text-accent">Nuestra Esencia</p>
-          <h2 className="mt-4 font-display text-4xl font-light leading-tight md:text-6xl">
+          <h2 className="mt-4 font-display text-3xl sm:text-4xl font-light leading-tight md:text-6xl">
             Un lugar pensado para <span className="italic text-primary">enamorarse</span>
           </h2>
           <div className="mt-6 h-px w-24 bg-gradient-gold" />
-          <p className="mt-8 text-base leading-relaxed text-muted-foreground md:text-lg">
+          <p className="mt-6 sm:mt-8 text-sm sm:text-base leading-relaxed text-muted-foreground md:text-lg">
             Love Restaurant nació de una idea simple: crear el espacio más romántico de
             Villavicencio. Un refugio donde los cerezos en flor, las velas y la cocina
             cuidadosamente preparada se unen para convertir cada cena en un recuerdo imborrable.
           </p>
-          <p className="mt-4 text-base leading-relaxed text-muted-foreground md:text-lg">
+          <p className="mt-3 sm:mt-4 text-sm sm:text-base leading-relaxed text-muted-foreground md:text-lg">
             Aniversarios, pedidas de mano, primeras citas o simplemente un martes que merece ser
             celebrado. Aquí cada mesa tiene su propia historia.
           </p>
-          <div className="mt-10 grid grid-cols-3 gap-6">
+          <div className="mt-8 sm:mt-10 grid grid-cols-3 gap-4 sm:gap-6">
             {[
               { n: "5★", l: "Google Reviews" },
               { n: "+5k", l: "Cenas mágicas" },
               { n: "100%", l: "Hecho con amor" },
             ].map((s) => (
               <div key={s.l}>
-                <p className="font-display text-3xl text-primary md:text-4xl">{s.n}</p>
+                <p className="font-display text-2xl sm:text-3xl md:text-4xl text-primary">{s.n}</p>
                 <p className="mt-1 text-xs uppercase tracking-[0.18em] text-muted-foreground">
                   {s.l}
                 </p>
@@ -408,27 +413,27 @@ function Menu() {
   return (
     <section
       id="menu"
-      className="relative bg-gradient-to-b from-background via-secondary/30 to-background py-24 md:py-32"
+      className="relative bg-gradient-to-b from-background via-secondary/30 to-background py-16 md:py-32"
     >
-      <div className="mx-auto max-w-7xl px-6">
+      <div className="mx-auto max-w-7xl px-4 md:px-6">
         <div className="reveal text-center">
           <p className="text-xs uppercase tracking-[0.3em] text-accent">Carta</p>
-          <h2 className="mt-4 font-display text-4xl font-light md:text-6xl">
+          <h2 className="mt-4 font-display text-3xl sm:text-4xl font-light md:text-6xl">
             Menú <span className="italic text-primary">de autor</span>
           </h2>
           <div className="mx-auto mt-6 h-px w-24 bg-gradient-gold" />
-          <p className="mx-auto mt-6 max-w-xl text-muted-foreground">
+          <p className="mx-auto mt-4 sm:mt-6 max-w-xl text-xs sm:text-sm md:text-base text-muted-foreground">
             Cada plato es una declaración de amor a los ingredientes, a la técnica y a quien lo
             recibe.
           </p>
         </div>
 
-        <div className="reveal mt-12 flex flex-wrap justify-center gap-2 md:gap-3">
+        <div className="reveal mt-8 sm:mt-12 flex flex-wrap justify-center gap-1.5 sm:gap-2 md:gap-3">
           {categories.map((c) => (
             <button
               key={c}
               onClick={() => setActive(c)}
-              className={`rounded-full px-6 py-3 text-xs uppercase tracking-[0.2em] transition-all md:text-sm ${
+              className={`rounded-full px-4 sm:px-6 py-2.5 sm:py-3 text-[10px] sm:text-xs md:text-sm uppercase tracking-[0.2em] transition-all ${
                 active === c
                   ? "bg-primary text-primary-foreground shadow-soft"
                   : "border border-border bg-card text-foreground/70 hover:border-accent hover:text-foreground"
@@ -439,13 +444,13 @@ function Menu() {
           ))}
         </div>
 
-        <div className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-2">
+        <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2 lg:gap-8">
           {menu[active].map((item) => (
             <article
               key={item.name}
-              className="group relative flex gap-6 overflow-hidden rounded-2xl border border-border bg-card p-5 shadow-soft transition-all duration-500 hover:-translate-y-1 hover:shadow-elegant"
+              className="group relative flex flex-col gap-4 overflow-hidden rounded-2xl border border-border bg-card p-4 shadow-soft transition-all duration-500 hover:-translate-y-1 hover:shadow-elegant sm:flex-row sm:gap-6 sm:p-5 md:gap-4"
             >
-              <div className="relative h-32 w-32 shrink-0 overflow-hidden rounded-xl md:h-40 md:w-40">
+              <div className="relative h-32 w-full shrink-0 overflow-hidden rounded-xl sm:h-40 sm:w-40">
                 <img
                   src={item.image}
                   alt={item.name}
@@ -461,13 +466,13 @@ function Menu() {
                     {item.tag}
                   </span>
                 )}
-                <h3 className="mt-2 font-display text-2xl leading-tight">{item.name}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                <h3 className="mt-2 font-display text-lg sm:text-2xl leading-tight">{item.name}</h3>
+                <p className="mt-2 text-xs sm:text-sm leading-relaxed text-muted-foreground line-clamp-2 sm:line-clamp-none">
                   {item.description}
                 </p>
                 <div className="mt-auto flex items-end justify-between pt-3">
                   <span className="h-px flex-1 bg-gradient-to-r from-border to-transparent" />
-                  <span className="ml-3 font-display text-xl text-primary">{item.price}</span>
+                  <span className="ml-3 font-display text-lg sm:text-xl text-primary whitespace-nowrap">{item.price}</span>
                 </div>
               </div>
             </article>
@@ -488,30 +493,30 @@ function Gallery() {
     { src: aboutImg, h: "row-span-1" },
   ];
   return (
-    <section id="galeria" className="py-24 md:py-32">
-      <div className="mx-auto max-w-7xl px-6">
+    <section id="galeria" className="py-16 md:py-32">
+      <div className="mx-auto max-w-7xl px-4 md:px-6">
         <div className="reveal text-center">
           <p className="text-xs uppercase tracking-[0.3em] text-accent">Galería</p>
-          <h2 className="mt-4 font-display text-4xl font-light md:text-6xl">
+          <h2 className="mt-4 font-display text-3xl sm:text-4xl font-light md:text-6xl">
             Para <span className="italic text-primary">no olvidar</span>
           </h2>
           <div className="mx-auto mt-6 h-px w-24 bg-gradient-gold" />
-          <p className="mx-auto mt-6 max-w-xl text-muted-foreground">
+          <p className="mx-auto mt-4 sm:mt-6 max-w-xl text-xs sm:text-sm md:text-base text-muted-foreground">
             Cada rincón pensado para la foto perfecta. Etiquétanos en{" "}
             <a
-              href="https://instagram.com"
+              href="https://www.tiktok.com/@love.restaurant"
               className="text-primary underline-offset-4 hover:underline"
             >
-              @loverestaurant.vvc
+              @love.restaurant
             </a>
           </p>
         </div>
 
-        <div className="reveal mt-12 grid auto-rows-[180px] grid-cols-2 gap-3 md:auto-rows-[220px] md:grid-cols-3 md:gap-4 lg:grid-cols-4">
+        <div className="reveal mt-12 grid auto-rows-[140px] grid-cols-2 gap-2 sm:auto-rows-[180px] sm:gap-3 md:auto-rows-[220px] md:grid-cols-3 md:gap-4 lg:grid-cols-4">
           {images.map((img, i) => (
             <div
               key={i}
-              className={`group relative overflow-hidden rounded-xl ${img.h} ${i === 0 ? "col-span-2 row-span-2 lg:col-span-2" : ""}`}
+              className={`group relative overflow-hidden rounded-lg sm:rounded-xl ${img.h} ${i === 0 ? "col-span-2 row-span-2 lg:col-span-2" : ""}`}
             >
               <img
                 src={img.src}
@@ -566,20 +571,20 @@ function Reservation() {
   };
 
   return (
-    <section id="reservas" className="relative overflow-hidden py-24 md:py-32">
+    <section id="reservas" className="relative overflow-hidden py-16 md:py-32">
       <div className="absolute inset-0 bg-gradient-to-br from-secondary/40 via-background to-rose/30" />
-      <div className="relative mx-auto grid max-w-7xl grid-cols-1 gap-12 px-6 md:grid-cols-2 md:gap-16">
+      <div className="relative mx-auto grid max-w-7xl grid-cols-1 gap-8 px-4 md:grid-cols-2 md:gap-16 md:px-6">
         <div className="reveal">
           <p className="text-xs uppercase tracking-[0.3em] text-accent">Reservas</p>
-          <h2 className="mt-4 font-display text-4xl font-light leading-tight md:text-6xl">
+          <h2 className="mt-4 font-display text-3xl sm:text-4xl font-light leading-tight md:text-6xl">
             Aparta tu <span className="italic text-primary">momento</span>
           </h2>
           <div className="mt-6 h-px w-24 bg-gradient-gold" />
-          <p className="mt-8 text-muted-foreground">
+          <p className="mt-8 text-sm md:text-base text-muted-foreground">
             Reservamos cada mesa con detalle. Cuéntanos sobre la ocasión y prepararemos todo para
             que sea perfecta.
           </p>
-          <div className="mt-10 space-y-4 text-sm">
+          <div className="mt-10 space-y-3 md:space-y-4 text-xs md:text-sm">
             <Info label="Horario" value="Mar — Dom · 5:00 PM – 12:00 AM" />
             <Info label="Dirección" value="Cl. 19 #40-14, Villavicencio, Meta" />
             <Info label="Reservas" value="+57 320 9837444" />
@@ -588,9 +593,9 @@ function Reservation() {
 
         <form
           onSubmit={onSubmit}
-          className="reveal rounded-3xl border border-border bg-card/80 p-6 shadow-elegant backdrop-blur-sm md:p-10"
+          className="reveal rounded-3xl border border-border bg-card/80 p-4 shadow-elegant backdrop-blur-sm sm:p-6 md:p-10"
         >
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4">
             <Field label="Nombre" name="name" type="text" required maxLength={80} />
             <Field label="Teléfono" name="phone" type="tel" required maxLength={20} />
             <Field label="Fecha" name="date" type="date" required />
@@ -621,7 +626,7 @@ function Reservation() {
               </select>
             </div>
           </div>
-          <div className="mt-5">
+          <div className="mt-4 sm:mt-5">
             <label className="mb-1.5 block text-xs uppercase tracking-[0.18em] text-muted-foreground">
               Notas (opcional)
             </label>
@@ -636,7 +641,7 @@ function Reservation() {
           <button
             type="submit"
             disabled={submitting}
-            className="mt-6 w-full rounded-full bg-gradient-to-r from-rose-deep to-primary px-10 py-4.5 text-sm uppercase tracking-[0.22em] text-primary-foreground shadow-elegant transition-all hover:-translate-y-0.5 disabled:opacity-60"
+            className="mt-5 sm:mt-6 w-full rounded-full bg-gradient-to-r from-rose-deep to-primary px-6 sm:px-10 py-4 sm:py-4.5 text-xs sm:text-sm uppercase tracking-[0.22em] text-primary-foreground shadow-elegant transition-all hover:-translate-y-0.5 disabled:opacity-60"
           >
             {submitting ? "Enviando…" : "Solicitar reserva"}
           </button>
@@ -743,37 +748,33 @@ function Footer() {
       id="contacto"
       className="border-t border-border bg-gradient-to-b from-background to-secondary/30"
     >
-      <div className="mx-auto max-w-7xl px-6 py-20">
-        <div className="grid grid-cols-1 gap-12 md:grid-cols-12">
+      <div className="mx-auto max-w-7xl px-4 md:px-6 py-16 md:py-20">
+        <div className="grid grid-cols-1 gap-8 md:gap-12 md:grid-cols-12">
           <div className="md:col-span-5">
-            <h3 className="font-display text-3xl font-light md:text-4xl">
+            <h3 className="font-display text-2xl sm:text-3xl md:text-4xl font-light">
               Love<span className="text-gradient-gold"> Restaurant</span>
             </h3>
-            <p className="mt-4 max-w-sm text-sm text-muted-foreground">
+            <p className="mt-3 sm:mt-4 max-w-sm text-xs sm:text-sm text-muted-foreground">
               El rincón más romántico de Villavicencio. Cenas mágicas bajo el árbol de cerezo rosa.
             </p>
             <div className="mt-6 flex gap-3">
-              <Social href="https://instagram.com" label="Instagram">
+              <Social href="https://www.tiktok.com/@love.restaurant" label="TikTok">
                 <svg
                   viewBox="0 0 24 24"
                   className="h-4 w-4"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
+                  fill="currentColor"
                 >
-                  <rect x="3" y="3" width="18" height="18" rx="5" />
-                  <circle cx="12" cy="12" r="4" />
-                  <circle cx="17.5" cy="6.5" r="1" fill="currentColor" />
+                  <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.86 2.86 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-.54-.05z" />
                 </svg>
               </Social>
-              <Social href="https://facebook.com" label="Facebook">
+              <Social href="https://www.facebook.com/loverestaurant.co/?locale=es_LA" label="Facebook">
                 <svg viewBox="0 0 24 24" className="h-4 w-4" fill="currentColor">
                   <path d="M13 22v-8h3l1-4h-4V7.5C13 6.4 13.4 6 14.5 6H17V2.2C16.6 2.1 15.3 2 14 2c-2.8 0-4 1.7-4 4v4H7v4h3v8h3z" />
                 </svg>
               </Social>
               <Social href={WHATSAPP_URL} label="WhatsApp">
-                <svg viewBox="0 0 24 24" className="h-4 w-4" fill="currentColor">
-                  <path d="M20 4a10 10 0 0 0-16.5 11L2 22l7.2-1.5A10 10 0 1 0 20 4zm-8 18a8 8 0 0 1-4.1-1.1l-.3-.2-4.3.9.9-4.2-.2-.3A8 8 0 1 1 12 22zm4.5-6c-.2-.1-1.4-.7-1.6-.8s-.4-.1-.5.1-.6.8-.8 1-.3.1-.5 0a6.3 6.3 0 0 1-3.2-2.8c-.2-.4.2-.4.6-1.2.1-.1 0-.3 0-.4l-.7-1.6c-.2-.4-.4-.4-.5-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-1 2.3c0 1.4 1 2.7 1.1 2.9s2 3.2 5 4.5c1.8.7 2.5.8 3.4.6.5-.1 1.4-.6 1.6-1.1s.2-1 .1-1.2-.3-.1-.5-.2z" />
+                <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
                 </svg>
               </Social>
             </div>
@@ -781,13 +782,13 @@ function Footer() {
 
           <div className="md:col-span-3">
             <p className="text-xs uppercase tracking-[0.22em] text-accent">Visítanos</p>
-            <p className="mt-4 text-sm">
+            <p className="mt-3 sm:mt-4 text-xs sm:text-sm">
               Cl. 19 #40-14
               <br />
               Villavicencio, Meta
             </p>
-            <p className="mt-4 text-xs uppercase tracking-[0.22em] text-accent">Reservas</p>
-            <p className="mt-2 text-sm">+57 320 9837444</p>
+            <p className="mt-3 sm:mt-4 text-xs uppercase tracking-[0.22em] text-accent">Reservas</p>
+            <p className="mt-2 text-xs sm:text-sm">+57 320 9837444</p>
           </div>
 
           <div className="md:col-span-4">
@@ -795,14 +796,14 @@ function Footer() {
               <iframe
                 title="Ubicación Love Restaurant"
                 src="https://www.google.com/maps?q=Cl.+19+%2340-14,+Villavicencio,+Meta&output=embed"
-                className="h-56 w-full md:h-64"
+                className="h-48 sm:h-56 w-full md:h-64"
                 loading="lazy"
               />
             </div>
           </div>
         </div>
 
-        <div className="mt-16 flex flex-col items-center justify-between gap-3 border-t border-border pt-6 text-xs text-muted-foreground md:flex-row">
+        <div className="mt-12 md:mt-16 flex flex-col items-center justify-between gap-3 border-t border-border pt-6 text-xs text-muted-foreground md:flex-row">
           <p>© {new Date().getFullYear()} Love Restaurant · Villavicencio, Meta</p>
           <p className="font-script text-base text-primary">Hecho con amor ♥</p>
         </div>
@@ -840,10 +841,10 @@ function WhatsAppFloat() {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Escríbenos por WhatsApp"
-      className="fixed bottom-5 right-5 z-50 grid h-14 w-14 place-items-center rounded-full bg-[#25D366] text-white shadow-elegant animate-pulse-ring hover:scale-105 transition-transform md:bottom-7 md:right-7 md:h-16 md:w-16"
+      className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 md:bottom-7 md:right-7 z-50 flex items-center justify-center h-12 w-12 sm:h-14 sm:w-14 md:h-16 md:w-16 rounded-full bg-[#25D366] text-white shadow-elegant animate-pulse-ring hover:scale-105 transition-transform"
     >
-      <svg viewBox="0 0 24 24" className="h-7 w-7 md:h-8 md:w-8" fill="currentColor">
-        <path d="M20 4a10 10 0 0 0-16.5 11L2 22l7.2-1.5A10 10 0 1 0 20 4zm-8 18a8 8 0 0 1-4.1-1.1l-.3-.2-4.3.9.9-4.2-.2-.3A8 8 0 1 1 12 22zm4.5-6c-.2-.1-1.4-.7-1.6-.8s-.4-.1-.5.1-.6.8-.8 1-.3.1-.5 0a6.3 6.3 0 0 1-3.2-2.8c-.2-.4.2-.4.6-1.2.1-.1 0-.3 0-.4l-.7-1.6c-.2-.4-.4-.4-.5-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-1 2.3c0 1.4 1 2.7 1.1 2.9s2 3.2 5 4.5c1.8.7 2.5.8 3.4.6.5-.1 1.4-.6 1.6-1.1s.2-1 .1-1.2-.3-.1-.5-.2z" />
+      <svg viewBox="0 0 24 24" className="h-6 w-6 sm:h-7 sm:w-7 md:h-8 md:w-8" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
       </svg>
     </a>
   );

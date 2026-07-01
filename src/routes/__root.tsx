@@ -7,10 +7,23 @@ import {
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
-import { useEffect, type ReactNode } from "react";
+import { useEffect, type ReactNode, createContext, useContext } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { useTheme } from "../hooks/use-theme";
+
+type ThemeContextType = ReturnType<typeof useTheme>;
+
+const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
+
+export function useThemeContext() {
+  const context = useContext(ThemeContext);
+  if (!context) {
+    throw new Error("useThemeContext must be used within ThemeProvider");
+  }
+  return context;
+}
 
 function NotFoundComponent() {
   return (
@@ -136,6 +149,25 @@ function RootShell({ children }: { children: ReactNode }) {
     <html lang="en">
       <head>
         <HeadContent />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  const theme = localStorage.getItem('theme-preference') || 'auto';
+                  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                  const effectiveTheme = theme === 'auto' ? (prefersDark ? 'dark' : 'light') : theme;
+                  
+                  if (effectiveTheme === 'dark') {
+                    document.documentElement.classList.add('dark');
+                  } else {
+                    document.documentElement.classList.remove('dark');
+                  }
+                } catch (e) {}
+              })()
+            `,
+          }}
+        />
       </head>
       <body>
         {children}
@@ -147,11 +179,29 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  const themeValue = useTheme();
+
+  // Asegurar que el tema se aplique al iniciar
+  useEffect(() => {
+    // Aplicar tema inmediatamente
+    const html = document.documentElement;
+    const effectiveTheme = themeValue.theme === "auto" 
+      ? themeValue.systemTheme 
+      : themeValue.theme;
+
+    if (effectiveTheme === "dark") {
+      html.classList.add("dark");
+    } else {
+      html.classList.remove("dark");
+    }
+  }, [themeValue]);
 
   return (
     <QueryClientProvider client={queryClient}>
-      {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-      <Outlet />
+      <ThemeContext.Provider value={themeValue}>
+        {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
+        <Outlet />
+      </ThemeContext.Provider>
     </QueryClientProvider>
   );
 }

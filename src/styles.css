@@ -164,3 +164,33 @@
   background-clip: text;
   color: transparent;
 }
+
+/* Mobile optimization - reduce animations on small devices */
+@media (max-width: 640px) {
+  @utility animate-fade-up {
+    animation: fade-up 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) both !important;
+  }
+  @utility animate-fade-in {
+    animation: fade-in 1s ease-out both !important;
+  }
+  @utility animate-float {
+    animation: float-slow 8s ease-in-out infinite !important;
+  }
+  @utility animate-pulse-ring {
+    animation: pulse-ring 4s ease-in-out infinite !important;
+  }
+  @utility reveal {
+    transition: opacity 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+  }
+}
+
+/* Optimize for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
