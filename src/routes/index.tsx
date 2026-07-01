@@ -40,7 +40,7 @@ export const Route = createFileRoute("/")({
           },
           servesCuisine: ["Cocina de autor", "Romántica"],
           priceRange: "$$$",
-          telephone: "+57 300 000 0000",
+          telephone: "+57 320 9837444",
         }),
       },
     ],
@@ -48,8 +48,8 @@ export const Route = createFileRoute("/")({
   component: LoveRestaurantPage,
 });
 
-const WHATSAPP_NUMBER = "573000000000";
-const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hola Love Restaurant, me gustaría hacer una reserva")}`;
+const WHATSAPP_NUMBER = "573209837444";
+const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hola, quiero hacer una reserva")}`;
 
 type MenuItem = {
   name: string;
@@ -410,7 +410,7 @@ function Reservation() {
           <div className="mt-10 space-y-4 text-sm">
             <Info label="Horario" value="Mar — Dom · 5:00 PM – 12:00 AM" />
             <Info label="Dirección" value="Cl. 19 #40-14, Villavicencio, Meta" />
-            <Info label="Reservas" value="+57 300 000 0000" />
+            <Info label="Reservas" value="+57 320 9837444" />
           </div>
         </div>
 
@@ -559,7 +559,7 @@ function Footer() {
             <p className="mt-4 text-xs uppercase tracking-[0.22em] text-accent">Horario</p>
             <p className="mt-2 text-sm">Mar — Dom<br />5:00 PM – 12:00 AM</p>
             <p className="mt-4 text-xs uppercase tracking-[0.22em] text-accent">Reservas</p>
-            <p className="mt-2 text-sm">+57 300 000 0000</p>
+            <p className="mt-2 text-sm">+57 320 9837444</p>
           </div>
 
           <div className="md:col-span-4">
