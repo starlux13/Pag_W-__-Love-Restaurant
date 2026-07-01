@@ -40,7 +40,7 @@ export const Route = createFileRoute("/")({
           },
           servesCuisine: ["Cocina de autor", "Romántica"],
           priceRange: "$$$",
-          telephone: "+57 300 968 8646",
+          telephone: "+57 320 9837444",
         }),
       },
     ],
@@ -48,8 +48,8 @@ export const Route = createFileRoute("/")({
   component: LoveRestaurantPage,
 });
 
-const WHATSAPP_NUMBER = "573009688646";
-const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hola Love Restaurant, quiero hacer una reserva")}`;
+const WHATSAPP_NUMBER = "573209837444";
+const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hola Love Restaurant, necesito información sobre el restaurante")}`;
 
 type MenuItem = {
   name: string;
@@ -157,7 +157,7 @@ function Nav() {
               {l.label}
             </a>
           ))}
-          <a href="#reservas" className="rounded-full border border-accent bg-accent/10 px-5 py-2 text-sm uppercase tracking-[0.18em] text-foreground transition-all hover:bg-accent hover:text-accent-foreground">
+          <a href="#reservas" className="rounded-full border border-accent bg-accent/10 px-6 py-2.5 text-sm uppercase tracking-[0.18em] text-foreground transition-all hover:bg-accent hover:text-accent-foreground">
             Reservar
           </a>
         </nav>
@@ -177,7 +177,7 @@ function Nav() {
                 {l.label}
               </a>
             ))}
-            <a href="#reservas" onClick={() => setOpen(false)} className="mt-2 rounded-full bg-accent px-5 py-3 text-center text-sm uppercase tracking-[0.18em] text-accent-foreground">
+            <a href="#reservas" onClick={() => setOpen(false)} className="mt-2 rounded-full bg-accent px-6 py-3.5 text-center text-sm uppercase tracking-[0.18em] text-accent-foreground">
               Reservar
             </a>
           </div>
@@ -208,11 +208,11 @@ function Hero() {
           El rincón más romántico de Villavicencio. Cocina de autor, coctelería única y la atmósfera mágica que estabas buscando para celebrar lo importante.
         </p>
         <div className="animate-fade-up mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row" style={{ animationDelay: "0.4s" }}>
-          <a href="#reservas" className="group inline-flex items-center gap-3 rounded-full bg-gradient-to-r from-rose-deep to-primary px-10 py-4 text-sm uppercase tracking-[0.22em] text-primary-foreground shadow-elegant transition-transform hover:-translate-y-0.5 hover:shadow-2xl">
+          <a href="#reservas" className="group inline-flex items-center gap-3 rounded-full bg-gradient-to-r from-rose-deep to-primary px-12 py-4.5 text-sm uppercase tracking-[0.22em] text-primary-foreground shadow-elegant transition-transform hover:-translate-y-0.5 hover:shadow-2xl">
             Reservar una Mesa
             <span className="transition-transform group-hover:translate-x-1">→</span>
           </a>
-          <a href="#menu" className="rounded-full border border-white/40 px-10 py-4 text-sm uppercase tracking-[0.22em] text-white backdrop-blur-sm transition-colors hover:bg-white/10">
+          <a href="#menu" className="rounded-full border border-white/40 px-12 py-4.5 text-sm uppercase tracking-[0.22em] text-white backdrop-blur-sm transition-colors hover:bg-white/10">
             Ver el menú
           </a>
         </div>
@@ -296,7 +296,7 @@ function Menu() {
             <button
               key={c}
               onClick={() => setActive(c)}
-              className={`rounded-full px-5 py-2.5 text-xs uppercase tracking-[0.2em] transition-all md:text-sm ${
+              className={`rounded-full px-6 py-3 text-xs uppercase tracking-[0.2em] transition-all md:text-sm ${
                 active === c
                   ? "bg-primary text-primary-foreground shadow-soft"
                   : "border border-border bg-card text-foreground/70 hover:border-accent hover:text-foreground"
@@ -410,7 +410,7 @@ function Reservation() {
           <div className="mt-10 space-y-4 text-sm">
             <Info label="Horario" value="Mar — Dom · 5:00 PM – 12:00 AM" />
             <Info label="Dirección" value="Cl. 19 #40-14, Villavicencio, Meta" />
-            <Info label="Reservas" value="+57 300 968 8646" />
+            <Info label="Reservas" value="+57 320 9837444" />
           </div>
         </div>
 
@@ -440,7 +440,7 @@ function Reservation() {
           <button
             type="submit"
             disabled={submitting}
-            className="mt-6 w-full rounded-full bg-gradient-to-r from-rose-deep to-primary px-8 py-4 text-sm uppercase tracking-[0.22em] text-primary-foreground shadow-elegant transition-all hover:-translate-y-0.5 disabled:opacity-60"
+            className="mt-6 w-full rounded-full bg-gradient-to-r from-rose-deep to-primary px-10 py-4.5 text-sm uppercase tracking-[0.22em] text-primary-foreground shadow-elegant transition-all hover:-translate-y-0.5 disabled:opacity-60"
           >
             {submitting ? "Enviando…" : "Solicitar reserva"}
           </button>
@@ -557,7 +557,7 @@ function Footer() {
             <p className="text-xs uppercase tracking-[0.22em] text-accent">Visítanos</p>
             <p className="mt-4 text-sm">Cl. 19 #40-14<br />Villavicencio, Meta</p>
 <p className="mt-4 text-xs uppercase tracking-[0.22em] text-accent">Reservas</p>
-            <p className="mt-2 text-sm">+57 300 968 8646</p>
+            <p className="mt-2 text-sm">+57 320 9837444</p>
           </div>
 
           <div className="md:col-span-4">

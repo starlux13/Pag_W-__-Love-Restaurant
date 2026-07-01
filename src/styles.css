@@ -44,44 +44,44 @@
 }
 
 :root {
-  --radius: 0.5rem;
+  --radius: 1rem;
 
-  /* Brand palette — rosé, cream, gold */
-  --background: oklch(0.985 0.012 25);          /* cream white */
-  --foreground: oklch(0.28 0.04 25);             /* deep wine */
+  /* Brand palette — rosé, cream, gold - Luxury refined */
+  --background: oklch(0.99 0.008 25);          /* cream white - brighter */
+  --foreground: oklch(0.22 0.035 25);             /* deep wine - richer */
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.28 0.04 25);
+  --card-foreground: oklch(0.22 0.035 25);
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.28 0.04 25);
+  --popover-foreground: oklch(0.22 0.035 25);
 
-  --primary: oklch(0.55 0.13 15);                /* deep rose */
-  --primary-foreground: oklch(0.985 0.012 25);
-  --secondary: oklch(0.93 0.035 15);             /* dusty rose */
-  --secondary-foreground: oklch(0.28 0.04 25);
-  --muted: oklch(0.95 0.018 25);
-  --muted-foreground: oklch(0.45 0.04 20);
-  --accent: oklch(0.78 0.09 60);                 /* soft gold */
-  --accent-foreground: oklch(0.28 0.04 25);
+  --primary: oklch(0.52 0.14 15);                /* deep rose - richer */
+  --primary-foreground: oklch(0.99 0.008 25);
+  --secondary: oklch(0.92 0.04 15);             /* dusty rose - refined */
+  --secondary-foreground: oklch(0.22 0.035 25);
+  --muted: oklch(0.96 0.015 25);
+  --muted-foreground: oklch(0.42 0.035 20);
+  --accent: oklch(0.72 0.13 60);                 /* soft gold - richer */
+  --accent-foreground: oklch(0.22 0.035 25);
   --destructive: oklch(0.55 0.22 27);
-  --destructive-foreground: oklch(0.985 0.012 25);
-  --border: oklch(0.9 0.025 25);
-  --input: oklch(0.9 0.025 25);
-  --ring: oklch(0.78 0.09 60);
+  --destructive-foreground: oklch(0.99 0.008 25);
+  --border: oklch(0.92 0.02 25);
+  --input: oklch(0.92 0.02 25);
+  --ring: oklch(0.72 0.13 60);
 
-  --rose: oklch(0.88 0.06 15);
-  --rose-deep: oklch(0.55 0.13 15);
-  --cream: oklch(0.97 0.018 70);
-  --gold: oklch(0.75 0.12 75);
-  --gold-soft: oklch(0.85 0.07 80);
+  --rose: oklch(0.86 0.07 15);
+  --rose-deep: oklch(0.52 0.14 15);
+  --cream: oklch(0.98 0.015 70);
+  --gold: oklch(0.70 0.14 75);
+  --gold-soft: oklch(0.82 0.08 80);
 
   --font-display: "Cormorant Garamond", "Playfair Display", Georgia, serif;
   --font-sans: "Jost", "Inter", system-ui, sans-serif;
   --font-script: "Dancing Script", cursive;
 
-  --gradient-rose: linear-gradient(135deg, oklch(0.93 0.035 15), oklch(0.88 0.06 15));
-  --gradient-gold: linear-gradient(135deg, oklch(0.85 0.07 80), oklch(0.7 0.13 70));
-  --shadow-elegant: 0 30px 60px -20px color-mix(in oklab, var(--rose-deep) 25%, transparent);
-  --shadow-soft: 0 10px 30px -10px color-mix(in oklab, var(--rose-deep) 15%, transparent);
+  --gradient-rose: linear-gradient(135deg, oklch(0.92 0.04 15), oklch(0.86 0.07 15));
+  --gradient-gold: linear-gradient(135deg, oklch(0.82 0.08 80), oklch(0.65 0.15 70));
+  --shadow-elegant: 0 40px 80px -25px color-mix(in oklab, var(--rose-deep) 20%, transparent);
+  --shadow-soft: 0 15px 40px -15px color-mix(in oklab, var(--rose-deep) 12%, transparent);
 }
 
 .dark {
@@ -136,22 +136,22 @@
 }
 
 @utility animate-fade-up {
-  animation: fade-up 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation: fade-up 1.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 }
 @utility animate-fade-in {
-  animation: fade-in 1.2s ease-out both;
+  animation: fade-in 1.8s ease-out both;
 }
 @utility animate-float {
-  animation: float-slow 4s ease-in-out infinite;
+  animation: float-slow 6s ease-in-out infinite;
 }
 @utility animate-pulse-ring {
-  animation: pulse-ring 2s infinite;
+  animation: pulse-ring 3s ease-in-out infinite;
 }
 
 @utility reveal {
   opacity: 0;
   transform: translateY(30px);
-  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: opacity 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   &.is-visible {
     opacity: 1;
     transform: translateY(0);
