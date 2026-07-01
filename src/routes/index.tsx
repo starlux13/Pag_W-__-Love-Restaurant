@@ -49,7 +49,7 @@ export const Route = createFileRoute("/")({
 });
 
 const WHATSAPP_NUMBER = "573209837444";
-const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hola, quiero hacer una reserva")}`;
+const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hola Love Restaurant, quiero hacer una reserva")}`;
 
 type MenuItem = {
   name: string;
