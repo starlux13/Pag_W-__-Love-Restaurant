@@ -3,6 +3,7 @@ import { useEffect, useRef, useState, type FormEvent } from "react";
 import { toast } from "sonner";
 import { Toaster } from "@/components/ui/sonner";
 import heroImg from "@/assets/hero.jpg";
+import { createReservation, getReservations, saveReservations } from "@/lib/admin-reservations";
 import aboutImg from "@/assets/about.jpg";
 import dish1 from "@/assets/dish-1.jpg";
 import dish2 from "@/assets/dish-2.jpg";
@@ -237,10 +238,10 @@ function Nav() {
             </a>
           ))}
           <a
-            href="#reservas"
+            href="/admin"
             className="rounded-full border border-accent bg-accent/10 px-5 py-2 text-sm uppercase tracking-[0.18em] text-foreground transition-all hover:bg-accent hover:text-accent-foreground"
           >
-            Reservar
+            Admin
           </a>
         </nav>
         <button onClick={() => setOpen((v) => !v)} className="md:hidden" aria-label="Menú">
@@ -535,12 +536,29 @@ function Reservation() {
     const data = new FormData(e.currentTarget);
     const name = String(data.get("name") || "").trim();
     const phone = String(data.get("phone") || "").trim();
+    const date = String(data.get("date") || "").trim();
+    const time = String(data.get("time") || "").trim();
+    const guests = Number(data.get("guests") || 2);
+    const occasion = String(data.get("occasion") || "Cena romántica").trim();
+    const notes = String(data.get("notes") || "").trim();
 
     if (name.length < 2 || name.length > 80) return toast.error("Por favor ingresa tu nombre.");
     if (!/^[+\d\s()-]{7,20}$/.test(phone)) return toast.error("Teléfono no válido.");
+    if (!date || !time) return toast.error("Por favor completa fecha y hora.");
 
     setSubmitting(true);
     setTimeout(() => {
+      const reservations = getReservations();
+      const nextReservation = createReservation({
+        name,
+        phone,
+        date,
+        time,
+        guests,
+        occasion,
+        notes,
+      });
+      saveReservations([nextReservation, ...reservations]);
       setSubmitting(false);
       toast.success("¡Reserva enviada! Te contactaremos para confirmar.");
       (e.target as HTMLFormElement).reset();
