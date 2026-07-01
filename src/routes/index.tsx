@@ -40,7 +40,7 @@ export const Route = createFileRoute("/")({
           },
           servesCuisine: ["Cocina de autor", "Romántica"],
           priceRange: "$$$",
-          telephone: "+57 300 9688646",
+          telephone: "+57 300 968 8646",
         }),
       },
     ],
@@ -410,7 +410,7 @@ function Reservation() {
           <div className="mt-10 space-y-4 text-sm">
             <Info label="Horario" value="Mar — Dom · 5:00 PM – 12:00 AM" />
             <Info label="Dirección" value="Cl. 19 #40-14, Villavicencio, Meta" />
-            <Info label="Reservas" value="+57 300 9688646" />
+            <Info label="Reservas" value="+57 300 968 8646" />
           </div>
         </div>
 
@@ -557,7 +557,7 @@ function Footer() {
             <p className="text-xs uppercase tracking-[0.22em] text-accent">Visítanos</p>
             <p className="mt-4 text-sm">Cl. 19 #40-14<br />Villavicencio, Meta</p>
 <p className="mt-4 text-xs uppercase tracking-[0.22em] text-accent">Reservas</p>
-            <p className="mt-2 text-sm">+57 300 9688646</p>
+            <p className="mt-2 text-sm">+57 300 968 8646</p>
           </div>
 
           <div className="md:col-span-4">
